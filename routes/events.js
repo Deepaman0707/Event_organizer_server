@@ -6,10 +6,10 @@ const pool = require('../db')
 router.use(express.json())
 router.post('/newevent', async (req, res) => {
   try {
-    const { title, description, fee, creator, category } = req.body
+    const { title, description, fee, creator, category, startDate, endDate, startTime, endTime } = req.body
     let newEvent = await pool.query(
-      'INSERT INTO event (event_name, event_Description, creator, fee, category, likes, attendees) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-      [title, description, creator, fee, category, [creator], [creator]]
+      'INSERT INTO event (event_name, event_Description, creator, fee, category, likes, attendees, startDate, endDate, startTime, endTime) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *',
+      [title, description, creator, fee, category, [creator], [creator], startDate, endDate, startTime, endTime]
     )
     const eventData = newEvent.rows[0]
     res.json({ eventData })

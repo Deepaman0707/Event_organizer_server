@@ -1,21 +1,25 @@
 CREATE DATABASE Events;
 
-CREATE table users (
+CREATE TABLE users (
     id SERIAL NOT NULL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     password VARCHAR(20) NOT NULL,
-    department VARCHAR(50),
-    followers int[],
-    following int []
+    followers INT[],
+    following INT[],
+    email VARCHAR(255) NOT NULL
 )
 
-CREATE table event(
+CREATE TABLE event(
     id SERIAL NOT NULL PRIMARY KEY,
     event_name VARCHAR(50) NOT NULL,
+    event_description VARCHAR(50),
     creator VARCHAR(50) NOT NULL,
-    startDate date NOT NULL,
-    endDate date NOT NULL,
-    likes int[],
-    attendees int [],
-    category VARCHAR(50)
+    startDate VARCHAR(50),
+    startTime VARCHAR(50),
+    endDate VARCHAR(50),
+    endTime VARCHAR(50),
+    likes INT[],
+    attendees INT[],
+    category VARCHAR(50),
+    fee INT NOT NULL
 )
