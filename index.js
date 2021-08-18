@@ -8,7 +8,9 @@ const cors = require('cors')
 app.use(morgan('dev'))
 app.use(cors())
 app.use(express.json())
-
+app.get('/', (req, res) => {
+  res.json('HELLO')
+})
 //routes
 app.use('/auth', require('./routes/jwtAuth'))
 // app.use("/authentication", require("./routes/jwtAuth"));
