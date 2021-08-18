@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const pool = require('../db')
+const pool = require('../db/db')
 
 router.get('/:userid', async (req, res, next) => {
   const { userid } = req.params
