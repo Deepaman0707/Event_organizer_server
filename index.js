@@ -1,4 +1,5 @@
 const express = require('express')
+const PORT = process.env.PORT || 8080
 const app = express()
 const morgan = require('morgan')
 const cors = require('cors')
@@ -20,7 +21,5 @@ app.use('/events', require('./routes/events'))
 app.use('/likes', require('./routes/likes'))
 app.use('/attendees', require('./routes/attendees'))
 app.use('/userdetail', require('./routes/userdetail'))
+app.listen(PORT, () => console.log('Magic happening on PORT', +PORT))
 
-app.listen(5000, () => {
-  console.log(`Server is starting on port 5000`)
-})
