@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const pool = require('../db/db')
 const validInfo = require('../middleware/validInfo')
 const jwtGenerator = require('../utils/jwtGenerator')
@@ -34,7 +34,7 @@ router.post('/register', validInfo, async (req, res) => {
     res.json({ jwtToken, userData })
   } catch (err) {
     console.error(err.message)
-    res.status(500).send('Server error')
+    res.status(500).send(err.message)
   }
 })
 
@@ -62,7 +62,7 @@ router.post('/login', validInfo, async (req, res) => {
     return res.json({ jwtToken, userData })
   } catch (err) {
     console.error(err.message)
-    res.status(500).send('Server error')
+    res.status(500).send(err.message)
   }
 })
 
@@ -71,7 +71,7 @@ router.get('/is-verify', authorize, async (req, res) => {
     res.json(true)
   } catch (err) {
     console.error(err.message)
-    res.status(500).send('Server error')
+    res.status(500).send(err.message)
   }
 })
 
